@@ -13,7 +13,7 @@ public class Problem10972 {
         }
 
         for(int i=N-1; i>0; i--){
-            if(arr[i]<arr[i-1]){
+            if(arr[i]>arr[i-1]){
                 count--;
             }
             else{
@@ -26,7 +26,7 @@ public class Problem10972 {
         }
         else{
            for(int i=count; i<N; i++){
-               if(arr[count-1]<arr[i]){
+               if(arr[count-1]>arr[i]){
                    j=i;
                }
            }
@@ -44,7 +44,7 @@ public class Problem10972 {
            }
 
             for(int i=0; i<N; i++){
-                System.out.print(arr[i]+" ");;
+                System.out.print(arr[i]+" ");
             }
         }
 
