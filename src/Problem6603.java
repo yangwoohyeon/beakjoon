@@ -27,7 +27,7 @@ public class Problem6603 {
         }
 
     }
-    public static void dfs(int count,int start){
+    public static void dfs(int count,int start){ //start를 사용해서 출력 안할 숫자를 뒤부터 당겨서 올수 있다.
         if(count==6){
             for(int i=0; i<6; i++){
                 System.out.print(selected[i]+" ");
