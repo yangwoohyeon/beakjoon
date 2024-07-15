@@ -22,6 +22,7 @@ public class Probelm14889 {
         System.out.println(Min);
 
     }
+
     static void dfs(int idx, int count){
         if(count==N/2){
             diff();
