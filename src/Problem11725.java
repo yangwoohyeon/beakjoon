@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
 public class Problem11725 {
-    static Node head = new Node(1,null,null,null);
+    static Node head = new Node(1,null,null);
     static boolean check;
+    static boolean[] visit;
+    static int[] parent;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();
         scanner.nextLine();
+        visit=new boolean[N+1];
+        parent = new int[N+1];
 
         for(int i=0; i<N-1; i++){
             int parent = scanner.nextInt();
@@ -17,9 +21,10 @@ public class Problem11725 {
                 insertNode(head,son,parent);
             }
         }
+        dfs(head);
 
         for(int i=2; i<=N; i++){
-            searchNode(head,i);
+            System.out.println(parent[i]);
         }
 
     }
@@ -28,13 +33,11 @@ public class Problem11725 {
         private int data;
         private Node left;
         private Node right;
-        private Node parent;
 
-        Node(int data, Node left, Node right,Node parent){
+        Node(int data, Node left, Node right){
             this.data = data;
             this.left=left;
             this.right = right;
-            this.parent = parent;
         }
 
     }
@@ -44,10 +47,10 @@ public class Problem11725 {
         }
         if (tmp.data == root) {
             if (tmp.left == null) {
-                tmp.left = new Node(data, null, null, tmp);
+                tmp.left = new Node(data, null, null);
                 check=true;
             } else if (tmp.right == null) {
-                tmp.right = new Node(data, null, null, tmp);
+                tmp.right = new Node(data, null, null);
                 check=true;
             }
         } else {
@@ -56,18 +59,17 @@ public class Problem11725 {
         }
     }
 
-    public static void searchNode(Node tmp, int data){
-        if(tmp ==null){
-            return;
+    public static void dfs(Node node){
+        visit[node.data]=true;
+
+        if(node.left!=null && !visit[node.left.data]){
+            parent[node.left.data]=node.data;
+            dfs(node.left);
+        }
+        if(node.right!=null && !visit[node.right.data]){
+            parent[node.right.data]=node.data;
+            dfs(node.right);
         }
 
-        if(tmp.data == data){
-            System.out.println(tmp.parent.data);
-            return;
-        }
-        else{
-            searchNode(tmp.left,data);
-            searchNode(tmp.right,data);
-        }
     }
 }
