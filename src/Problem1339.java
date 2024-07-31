@@ -23,6 +23,7 @@ public class Problem1339 {
             }
         }
         Arrays.sort(a, Collections.reverseOrder());
+
         int num=9;
         int max=0;
         for(int i=0; i<26; i++){
