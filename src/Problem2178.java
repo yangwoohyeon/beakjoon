@@ -31,7 +31,7 @@ public class Problem2178 {
         System.out.println(arr[N - 1][M - 1]);
     }
 
-    public static void BFS(int x, int y) {
+    public static void BFS(int x, int y) {//
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{x, y});
 
