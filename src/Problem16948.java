@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Problem16948 {
+public class Problem16948 {//데스 나이트
     static int N;
     static int[][] arr;
     static int[] destination=new int[2];
