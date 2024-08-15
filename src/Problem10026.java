@@ -38,7 +38,7 @@ public class Problem10026 {
         // visit 배열 초기화
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
-                visit[i][j] = false;
+                visit[i][j] = false; //방문하지 않은 것으로 초기화
             }
         }
 
