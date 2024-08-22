@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Problem1931 {
     static int[][] arr;
     static int N;
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -18,12 +17,24 @@ public class Problem1931 {
             }
         }
 
-        Arrays.sort(arr,(a,b)->Integer.compare(a[0],b[0]));
+        Arrays.sort(arr, (o1, o2) -> {
+            if(o1[1] == o2[1]) { //종료시간이 같을 경우 시작 시간이 빠른 순
+                return o1[0] - o2[0];
+            }
+            return o1[1] - o2[1];
+        });
 
+        int count=0;
+        int end=0;
 
+        for(int i=0; i<N; i++){
+            if(end<=arr[i][0]){
+                end=arr[i][1];
+                count++;
+            }
+        }
+
+        System.out.println(count);
     }
 
-    static void dfs(int index, int count){
-
-    }
 }
