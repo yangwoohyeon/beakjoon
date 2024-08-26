@@ -35,6 +35,11 @@ public class Problem1931 {
         }
 
         System.out.println(count);
+
+        // 정렬된 배열 출력 (선택 사항)
+        for (int[] row : arr) {
+            System.out.println(Arrays.toString(row));
+        }
     }
 
 }
