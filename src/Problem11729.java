@@ -19,9 +19,9 @@ public class Problem11729 {
             sb.append(h1+" "+h3+"\n");
             return;
         }
-        move(n-1,h1,h3,h2);
-        sb.append(h1+" "+h3+"\n");
-        move(n-1,h2,h1,h3);
+        move(n-1,h1,h3,h2); //A --> B
+        sb.append(h1+" "+h3+"\n"); // A --> C
+        move(n-1,h2,h1,h3); // B --> C
     }
 
 }
