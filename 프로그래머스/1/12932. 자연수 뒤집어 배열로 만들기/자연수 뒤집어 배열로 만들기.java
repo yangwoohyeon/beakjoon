@@ -1,18 +1,21 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(long n) {
-        long m= n;
-        int[] answer = {};
-        int size=0;
-        while(n>0){
+        StringBuilder str = new StringBuilder();
+        while(true){
+            long number = n%10;
+            str.append(number);
             n=n/10;
-            size++;
+            if(n==0){
+                break;
+            }
         }
-        answer = new int[size];
-        int i=0;
-        while(m>0){
-            long x = m%10;
-            answer[i++]=(int)x;
-            m=m/10;
+        String s = str.toString();
+        int[] answer = new int[s.length()];
+        int idx=0;
+        for(int i=0; i<s.length(); i++){
+            answer[i]=s.charAt(i)-'0';
         }
         return answer;
     }
