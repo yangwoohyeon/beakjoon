@@ -1,48 +1,47 @@
 import java.util.*;
+
 class Solution {
-    
     private List<String> split(String source, int length){
-        List<String> tokens = new ArrayList<>();
-        for(int startIndex = 0; startIndex < source.length(); startIndex += length){
-            int endIndex = startIndex + length;
-            if(endIndex>source.length()){
-                endIndex = source.length();
+        List<String> token = new ArrayList<>();
+        for(int i=0; i<source.length(); i+=length){
+            int start = i;
+            int end = start+length;
+            if(end>source.length()){
+                end=source.length();
             }
-            tokens.add(source.substring(startIndex,endIndex));
+            token.add(source.substring(start,end));
         }
-        return tokens;
+        return token;
     }
-    
-    private int compress(String source, int length){
-        StringBuilder builder = new StringBuilder();
-        String last = "";
+    private int compress(String s, int length){
+        StringBuilder str = new StringBuilder();
+        String last="";
         int count = 0;
-        for(String token : split(source,length)){
-            if(token.equals(last)){
+        for(String a : split(s,length)){
+            if(a.equals(last)){
                 count++;
-            }else{
+            }
+            else{
                 if(count>1){
-                    builder.append(count);
+                    str.append(count);
                 }
-                builder.append(last);
-                last = token;
+                str.append(last);
+                last=a;
                 count=1;
             }
         }
-        if(count>1){ //마지막 토큰 압축 처리
-                builder.append(count);
+        if(count>1){
+            str.append(count);
         }
-        builder.append(last);
-        
-        return builder.length();
+        str.append(last);
+        return str.length();
     }
-    
     public int solution(String s) {
         int min = Integer.MAX_VALUE;
-        for(int length = 1; length<=s.length(); length++){
-            int compressed = compress(s,length);
+        for(int i=1; i<=s.length(); i++){
+            int compressed = compress(s,i);
             if(compressed<min){
-                min=compressed;
+                min = compressed;
             }
         }
         return min;
