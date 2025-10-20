@@ -1,24 +1,31 @@
+import java.util.*;
+
 class Solution {
     public String solution(String s) {
         String answer = "";
         StringBuilder str = new StringBuilder();
-        int n=0;
+        int idx=0;
         for(int i=0; i<s.length(); i++){
-            if(s.charAt(i)==' '){
-                n=0;
-                str.append(s.charAt(i));
+            char c= s.charAt(i);
+            if(c==' '){
+                str.append(c);
+                idx=0;
                 continue;
             }
-            if(n%2==0){
-                str.append(Character.toUpperCase(s.charAt(i)));
-                n++;
+            if(idx%2==0){
+                if(c>='a' && c<='z'){
+                    c=(char)('A'+c-'a');
+                }
+                str.append(c);
             }
             else{
-                str.append(Character.toLowerCase(s.charAt(i)));
-                n++;
+                if(c>='A' && c<='Z'){
+                    c=(char)('a'+c-'A');
+                }
+                str.append(c);
             }
+            idx++;
         }
-        answer= str.toString();
-        return answer;
+        return str.toString();
     }
 }
