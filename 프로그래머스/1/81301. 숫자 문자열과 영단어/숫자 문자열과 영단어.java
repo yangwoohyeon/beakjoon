@@ -1,69 +1,57 @@
 class Solution {
     public int solution(String s) {
-        int answer = 0;
-        int pos = 0;
         StringBuilder str = new StringBuilder();
-        while(true){
-            if(pos>=s.length()){
-                break;
-            }
-            if(Character.isDigit(s.charAt(pos))){
-                str.append(s.charAt(pos));
-                pos++;
+        int position=0;
+        while(position<s.length()){
+            if(Character.isDigit(s.charAt(position))){
+                str.append(s.charAt(position));
+                position++;
+                continue;
             }
             else{
-                if(s.charAt(pos)=='z'){
+                if(position+4<=s.length() && s.substring(position,position+4).equals("zero")){
                     str.append('0');
-                    pos+=4;
+                    position+=4;
                 }
-                else if(s.charAt(pos)=='o'){
-                    str.append('1');
-                    pos+=3;
+                else if(position+3<=s.length() && s.substring(position,position+3).equals("one")){
+                    str.append('1'); 
+                    position+=3;
                 }
-                else if(s.charAt(pos)=='t'){
-                    if(s.substring(pos,pos+3).equals("two")){
-                        str.append('2');
-                        pos+=3;
-                    }
-                    else{
-                        str.append('3');
-                        pos+=5;
-                    }
+                else if(position+3<=s.length() && s.substring(position,position+3).equals("two")){
+                    str.append('2');
+                    position+=3;
                 }
-                else if(s.charAt(pos)=='f'){
-                    if(s.substring(pos,pos+4).equals("four")){
-                        str.append('4');
-                        pos+=4;
-                    }
-                    else{
-                        str.append('5');
-                        pos+=4;
-                    }
+                else if(position+5<=s.length() && s.substring(position,position+5).equals("three")){
+                    str.append('3');
+                    position+=5;
                 }
-                else if(s.charAt(pos)=='s'){
-                    if(s.substring(pos,pos+3).equals("six")){
-                        str.append('6');
-                        pos+=3;
-                    }
-                    else{
-                        str.append('7');
-                        pos+=5;
-                    }
+                else if(position+4<=s.length() && s.substring(position,position+4).equals("four")){
+                    str.append('4');
+                    position+=4;
                 }
-                else if(s.charAt(pos)=='e'){
+                else if(position+4<=s.length() && s.substring(position,position+4).equals("five")){
+                    str.append('5');
+                    position+=4;
+                }
+                else if(position+3<=s.length() && s.substring(position,position+3).equals("six")){
+                    str.append('6');
+                    position+=3;
+                }
+                else if(position+5<=s.length() && s.substring(position,position+5).equals("seven")){
+                    str.append('7');
+                    position+=5;
+                }
+                else if(position+5<=s.length() && s.substring(position,position+5).equals("eight")){
                     str.append('8');
-                    pos+=5;
+                    position+=5;
                 }
-                else if(s.charAt(pos)=='n'){
+                else if(position+4<=s.length() && s.substring(position,position+4).equals("nine")){
                     str.append('9');
-                    pos+=4;
+                    position+=4;
                 }
             }
         }
         
-        String num = str.toString();
-        answer = Integer.parseInt(num);
-        
-        return answer;
+        return Integer.parseInt(str.toString());
     }
 }
