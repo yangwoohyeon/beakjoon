@@ -1,33 +1,34 @@
 import java.util.*;
-
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        int count = 0;
-        LinkedList<Integer> list = new LinkedList<>();
-        
-        while(count < progresses.length){
-            for(int i=count; i<progresses.length; i++){
-                progresses[i]=progresses[i]+speeds[i];
+       
+        Queue<Integer> queue = new LinkedList<>();
+        int pos=0;
+        while(true){
+            if(pos>=progresses.length){
+                break;
             }
-            int finish = 0;
-            for(int i=count; i<progresses.length; i++){
+            for(int i=pos; i<progresses.length; i++){
+                progresses[i]+=speeds[i];
+            }
+            int count=0;
+            for(int i=pos; i<progresses.length; i++){
                 if(progresses[i]<100){
                     break;
                 }
-                else{
-                    finish++;
+                if(progresses[i]>=100){
+                    count++;
+                    pos++;
                 }
             }
-            if(finish!=0){
-            list.add(finish);
-            count+=finish;
+            if(count>0){
+                queue.add(count);
             }
         }
-        int[] answer = new int[list.size()];
-        int i =0;
-        for(int n : list){
-            answer[i]=n;
-            i++;
+        int n = queue.size();
+        int[] answer = new int[n]; 
+        for(int i=0; i<n; i++){
+            answer[i]=queue.poll();
         }
         return answer;
     }
