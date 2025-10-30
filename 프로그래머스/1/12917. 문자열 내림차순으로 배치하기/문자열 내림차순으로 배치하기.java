@@ -1,26 +1,27 @@
 import java.util.*;
-
 class Solution {
-    public String sort(char[] c){
-        for(int i=0; i<c.length-1; i++){
-            for(int j=c.length-1; j>i; j--){
-                if(c[j]>c[j-1]){
-                    char tmp = c[j];
-                    c[j]=c[j-1];
-                    c[j-1]=tmp;
+    public String solution(String s) {
+        char[] str = new char[s.length()];
+        for(int i=0; i<s.length(); i++){
+            str[i]=s.charAt(i);
+        }
+        for(int i=0; i<s.length()-1; i++){
+            int max = i;
+            for(int j=i+1; j<s.length(); j++){
+                if(str[j]>str[max]){
+                    max=j;
                 }
             }
+            char tmp = str[max];
+            str[max]=str[i];
+            str[i]=tmp;
         }
-        StringBuilder str = new StringBuilder();
-        for(char a : c){
-            str.append(a);
-        }
-        return str.toString();
-    }
-    public String solution(String s) {
-        StringBuilder str = new StringBuilder();
-        char[] c = s.toCharArray();
         
-        return sort(c);
+        StringBuilder ans = new StringBuilder();
+        for(int i=0; i<s.length(); i++){
+            ans.append(str[i]);
+        }
+        
+        return ans.toString();
     }
 }
