@@ -1,18 +1,17 @@
 class Solution {
-    int count;
+    static int count=0; 
     public int solution(int[] numbers, int target) {
-        count=0;
-        dfs(numbers,target,0,0);
+        dfs(numbers,0,0,target);
         return count;
     }
-    public void dfs(int[] numbers, int target, int start, int now){
-        if(start==numbers.length){
-            if(target==now){
-                count++;
-            }
+    public void dfs(int[] numbers, int pos, int num, int target){
+        if(pos==numbers.length && num==target){
+            count++;
             return;
         }
-        dfs(numbers, target, start+1, now + numbers[start]);
-        dfs(numbers, target, start+1, now - numbers[start]);
+        if(pos+1<=numbers.length){
+            dfs(numbers,pos+1,num+numbers[pos],target);
+            dfs(numbers,pos+1,num-numbers[pos],target);
+        }
     }
 }
