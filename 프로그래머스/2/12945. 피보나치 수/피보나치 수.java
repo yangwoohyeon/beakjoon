@@ -2,22 +2,20 @@ import java.util.*;
 
 class Solution {
     int[] mem = new int[100001];
-    public int fibonacci(int n){
-        if(mem[n]!=-1){
-            return mem[n];
-        }
-        if(n==0 || n==1){
-            return n;
-        }
-        return mem[n]=(fibonacci(n-1)+fibonacci(n-2))%1234567;
-       
-    }
     public int solution(int n) {
         Arrays.fill(mem,-1);
         for(int i=0; i<=n; i++){
-            fibonacci(i);
+            mem[i]=fi(i);
         }
-      
-        return fibonacci(n);
+        return mem[n];
+    }
+    public int fi(int num){
+        if(mem[num]!=-1){
+            return mem[num];
+        }
+        if(num==1 || num==0){
+            return num;
+        }
+        return mem[num]=(fi(num-1)+fi(num-2))%1234567;
     }
 }
