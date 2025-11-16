@@ -1,8 +1,8 @@
 import java.util.*;
 class Solution {
     public int solution(int n, int k, int[] enemy) {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         int answer =0;
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         for(int e : enemy){
             n-=e;
             maxHeap.add(e);
