@@ -1,22 +1,12 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(long n) {
-        StringBuilder str = new StringBuilder();
-        while(true){
-            long number = n%10;
-            str.append(number);
-            n=n/10;
-            if(n==0){
-                break;
-            }
+        String str = Long.toString(n);
+        int[] arr = new int[str.length()];
+        int p = str.length()-1;
+        for(int i=0; i<arr.length; i++){
+            arr[i]=(int)str.charAt(p)-'0';
+            p--;
         }
-        String s = str.toString();
-        int[] answer = new int[s.length()];
-        int idx=0;
-        for(int i=0; i<s.length(); i++){
-            answer[i]=s.charAt(i)-'0';
-        }
-        return answer;
+        return arr;
     }
 }
