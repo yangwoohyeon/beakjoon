@@ -1,32 +1,27 @@
+import java.util.*;
 class Solution {
     public String solution(String s, int n) {
-        String answer = "";
         StringBuilder str = new StringBuilder();
         for(int i=0; i<s.length(); i++){
             char c = s.charAt(i);
             if(c==' '){
                 str.append(' ');
+                continue;
             }
-            else{
-                if(c>='a' && c<='z'){ //소문자
-                    if(c+n>'z'){
-                        c=(char)('a'+(c+n-'z')-1);
-                        str.append(c);
-                    }
-                    else{
-                        c=(char)(c+n);
-                        str.append(c);
-                    }
+            if(c>='A' && c<='Z'){
+                if((char)c+n>'Z'){
+                    str.append((char)(c+n-'Z'+'A'-1));
                 }
                 else{
-                    if(c+n>'Z'){
-                        c=(char)('A'+(c+n-'Z')-1);
-                        str.append(c);
-                    }
-                    else{
-                        c=(char)(c+n);
-                        str.append(c);
-                    }
+                    str.append((char)(c+n));
+                }
+            }
+            else{
+                if((char)c+n>'z'){
+                    str.append((char)(c+n-'z'+'a'-1));
+                }
+                else{
+                    str.append((char)(c+n));
                 }
             }
         }
